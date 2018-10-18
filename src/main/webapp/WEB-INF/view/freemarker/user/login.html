@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+
+	<HEAD>
+		<TITLE>登录</TITLE>
+		<META http-equiv=Content-Type content="text/html; charset=utf-8">
+		<LINK href="${rc.contextPath}/css/public.css" type=text/css rel=stylesheet>
+		<LINK href="${rc.contextPath}/css/login.css" type=text/css rel=stylesheet>
+		<META content="MSHTML 6.00.2900.5848" name=GENERATOR>
+		
+	</HEAD>
+
+	<BODY>
+		<DIV id=div1 height="600px" width="800px">
+			<TABLE id=login height="600px" cellSpacing=0 cellPadding=0 width="800px" align=center>
+				<TBODY>
+					<TR id=main>
+						<TD>
+							<TABLE cellSpacing=0 cellPadding=0>
+								<TBODY>
+									<tr height="95px">
+										<td colspan="2"></td>
+									</tr>
+									<tr>
+										<td width="350px"></td>
+										<td>
+											<form action="${rc.contextPath}/user/dologin" method="post">
+												<TABLE cellSpacing=0 cellPadding=0>
+													<TBODY>
+														<TR height=40>
+															<TD rowSpan=4>&nbsp;</TD>
+															<TD>用户名：</TD>
+															<TD>
+																<INPUT class=textbox id="userName" name="userName">
+															</TD>
+															<TD width=120>&nbsp;</TD>
+														</TR>
+														<TR height=40>
+															<TD>密　码：</TD>
+															<TD>
+																<INPUT class=textbox id="password" type=password name="password">
+															</TD>
+															<TD width=120>&nbsp;</TD>
+														</TR>
+														<TR height=40>
+															<TD>验证码：</TD>
+															<TD vAlign=center colSpan=2>
+																<INPUT id=txtSN size=4 name=txtSN> &nbsp;
+																<IMG src="${rc.contextPath}/img/default.gif" border=0>
+																<A id=LinkButton1 href="#">不清楚，再来一张</A>
+															</TD>
+														</TR>
+														<TR height=40>
+															<TD></TD>
+															<TD align=right>
+																<INPUT id=btnLogin type=submit value=" 登 录 " name=btnLogin>
+															</TD>
+															<TD width=120>&nbsp;</TD>
+														</TR>
+													</TBODY>
+												</TABLE>
+											</form>
+										</td>
+									</tr>
+								</TBODY>
+							</TABLE>
+						</TD>
+					</tr>
+					<TR id=root height=104>
+						<TD>&nbsp;</TD>
+					</TR>
+				</TBODY>
+			</TABLE>
+		</DIV>
+		<DIV id=div2 style="DISPLAY: none"></DIV>
+		</CONTENTTEMPLATE>
+	</BODY>
+
+</HTML>

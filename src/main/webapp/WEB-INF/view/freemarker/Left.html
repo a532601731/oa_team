@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+
+	<HEAD>
+		<TITLE>无标题页</TITLE>
+		<META http-equiv=Content-Type content="text/html; charset=utf-8">
+		<STYLE type="text/css">
+			{
+				FONT-SIZE: 12px
+			}
+			
+			#menuTree A {
+				COLOR: #566984;
+				TEXT-DECORATION: none
+			}
+		</STYLE>
+		<SCRIPT src="${rc.contextPath}/js/TreeNode.js" type="text/javascript"></SCRIPT>
+		<SCRIPT src="${rc.contextPath}/js/Tree.js" type="text/javascript"></SCRIPT>
+		<SCRIPT src="${rc.contextPath}/js/jquery-3.3.1.min.js" type="text/javascript"></SCRIPT>
+		<META content="MSHTML 6.00.2900.5848" name="GENERATOR">
+	</HEAD>
+
+	<BODY style="BACKGROUND-POSITION-Y: -120px; BACKGROUND-IMAGE: url(img/bg.gif); BACKGROUND-REPEAT: repeat-x">
+		<TABLE height="100%" cellSpacing=0 cellPadding=0 width="100%">
+			<TBODY>
+				<TR>
+					<TD width=10 height=29>
+						<IMG src="${rc.contextPath}/img/bg_left_tl.gif">
+					</TD>
+					<TD style="FONT-SIZE: 18px; BACKGROUND-IMAGE: url(img/bg_left_tc.gif); COLOR: white; FONT-FAMILY: system">Main Menu
+					</TD>
+					<TD width=10>
+						<IMG src="img/bg_left_tr.gif">
+					</TD>
+				</TR>
+				<TR>
+					<TD style="BACKGROUND-IMAGE: url(img/bg_left_ls.gif)"></TD>
+					<TD id="menuTree" style="PADDING-RIGHT: 10px; PADDING-LEFT: 10px; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; HEIGHT: 100%; BACKGROUND-COLOR: white" vAlign="top"></TD>
+					<TD style="BACKGROUND-IMAGE: url(img/bg_left_rs.gif)"></TD>
+				</TR>
+				<TR>
+					<TD width=10>
+						<IMG src="${rc.contextPath}/img/bg_left_bl.gif">
+					</TD>
+					<TD style="BACKGROUND-IMAGE: url(img/bg_left_bc.gif)"></TD>
+					<TD width=10>
+						<IMG src="${rc.contextPath}/img/bg_left_br.gif">
+					</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+		<div id="list" style="visibility: none">
+			<#list user.role.authes as auth>
+				<div class="lev0">
+					<div class="lev1">${auth.authName}
+					</div>
+					<div class="${auth.menuUrl}">
+						<#if (auth.childAuth?size>0)>
+							<#list auth.childAuth as child>
+								<span class="lev2">${child.authName}</span>
+								<span class="lev3">${child.menuUrl}</span>
+							</#list>
+						</#if>
+					</div>
+				</div>
+			</#list>
+		</div>
+		<SCRIPT type="text/javascript">
+			var tree = null;
+			var root = new TreeNode('系统菜单');
+			var $list = $('.lev0');
+			for(var i = 0; i < $list.length; i++) {
+				var $lev1 = $($list.get(i)).find('.lev1');
+				var fun = new TreeNode($lev1.text());
+					var $in = $lev1.next();
+					var $lev2 = $in.find('.lev2');
+					var $lev3 = $in.find('.lev3');
+					if($lev2.length === 0) {
+						var funin = new TreeNode($lev1.text(), $in.attr('class'), 'tree_node.gif', null, 'tree_node.gif', null);
+						fun.add(funin);
+					} else {
+						for(var j = 0; j < $lev2.length; j++) {
+							var funin = new TreeNode($($lev2.get(j)).text(), $($lev3.get(j)).text(), 'tree_node.gif', null, 'tree_node.gif', null);
+							fun.add(funin);
+						}
+					}
+				root.add(fun);
+			}
+			
+			tree = new Tree(root);
+			tree.show('menuTree')
+		</SCRIPT>
+	</BODY>
+
+</HTML>
