@@ -26,11 +26,20 @@
 			if(success==1){
 				alert("修改资料成功！！")
 			}
+			if(success==2){
+				alert("修改密码成功！！")
+			}
 		}
 		if(location.href.indexOf("errors")!=-1){
 			var errors=${errors}+'';
 			if(errors==1){
 				alert("修改资料失败！！")
+			}
+			if(errors==2){
+				alert("您的密码输入有误！！")
+			}
+			if(errors==3){
+				alert("修改密码失败！！")
 			}
 		}
 	})

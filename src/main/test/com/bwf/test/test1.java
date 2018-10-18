@@ -17,12 +17,8 @@ public class test1 {
 	
 	@Test
 	public void test(){
-	User user=new User();
-		user.setUserId(1);
-		user.setNickname("你爸爸");
+	User user=ius.getUserByUserId(1);
+		
 		System.out.println(user);
-		ius.updateNickname(user);
-		
-		
 	}
 }

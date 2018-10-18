@@ -23,5 +23,17 @@ public class UserService implements IUserService {
 		// TODO Auto-generated method stub
 		return userMapper.updateNickname(user);
 	}
+
+	@Override
+	public int updatePwd(User user) {
+		// TODO Auto-generated method stub
+		return userMapper.updatePwd(user);
+	}
+
+	@Override
+	public User getUserByUserId(Integer id) {
+		// TODO Auto-generated method stub
+		return userMapper.getUserByUserId(id);
+	}
 	
 }

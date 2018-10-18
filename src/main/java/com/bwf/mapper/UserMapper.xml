@@ -69,5 +69,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     	set nickname=#{nickname}    	
     	where user_id = #{userId}
     </update>
+    <update id="updatePwd" parameterType="com.bwf.entity.User">
+    	update `users` 
+    	set password=#{password} 	
+    	where user_id = #{userId}
+    </update>
+    <select id="getUserByUserId" parameterType="int" resultMap="user">
+		SELECT u.user_id AS user_id, user_name, department_name, nickname, password,
+		r.role_id AS role_id, r.role_name AS role_name, g.group_id AS group_id,
+		g.group_name AS group_name, g.level AS level
+		FROM users AS u 
+		LEFT OUTER JOIN departments AS d ON u.department_id = d.department_id
+		LEFT OUTER JOIN groups_users AS gu ON u.user_id = gu.user_id
+		LEFT OUTER JOIN groups AS g ON gu.group_id = g.group_id
+		LEFT OUTER JOIN users_roles AS ur ON u.user_id = ur.user_id
+		LEFT OUTER JOIN roles AS r ON ur.role_id = r.role_id
+		WHERE u.user_id=#{id}
+	</select>
+    
+    
 	
 </mapper> 
