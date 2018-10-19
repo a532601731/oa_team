@@ -2,6 +2,7 @@ package com.bwf.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.bwf.service.impl.UserService;
@@ -13,7 +14,10 @@ public class DefaultController {
 	UserService userService;
 	
 	@GetMapping(value = "index")
-	public String toIndex() {
+	public String toIndex(ModelMap modelMap,Integer success) {
+		if(success!=null){
+			modelMap.addAttribute("success",success);
+		}
 		return "index";
 	}
 	

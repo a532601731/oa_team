@@ -5,6 +5,24 @@
 		<TITLE>MyOffice 首页</TITLE>
 		<META http-equiv=Content-Type content="text/html; charset=utf-8">
 		<META content="MSHTML 6.00.2900.5848" name=GENERATOR>
+		<link rel="stylesheet" href="${rc.contextPath}/css/animate.min.css" />
+		<script type="text/javascript" src="${rc.contextPath}/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="${rc.contextPath}/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="${rc.contextPath}/js/wow.js" ></script>
+		<link rel="stylesheet" href="${rc.contextPath}/css/global.css" />
+		<link rel="stylesheet" href="${rc.contextPath}/css/index.css" />
+		<script type="text/javascript" src="${rc.contextPath}/js/global.js" ></script>
+		<script type="text/javascript">
+			$(function(){
+				if(location.href.indexOf("success")!=-1){
+    			var success=${success}+'';
+    			if(success==1){
+    				alert("修改成功！！")
+    			}
+    			top.location.reload()
+    		}
+			})
+		</script>
 	</HEAD>
 	<FRAMESET id=index border=0 frameSpacing=0 rows=120,* frameBorder=no>
 		<FRAME id=topFrame name=topFrame src="Top.html" noResize scrolling=no>

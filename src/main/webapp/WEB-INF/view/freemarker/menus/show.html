@@ -6,12 +6,54 @@
     <meta name="keywords" content="keyword1,keyword2,keyword3">
     <meta name="description" content="this is my page">
     <meta name="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="${rc.contextPath}/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="${rc.contextPath}/css/animate.min.css" />
+		<script type="text/javascript" src="${rc.contextPath}/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="${rc.contextPath}/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="${rc.contextPath}/js/wow.js" ></script>
+		<link rel="stylesheet" href="${rc.contextPath}/css/global.css" />
+		<link rel="stylesheet" href="${rc.contextPath}/css/index.css" />
+		<script type="text/javascript" src="${rc.contextPath}/js/global.js" ></script>
+	</head>
+    <script type="text/javascript">
+    	$(function(){
+    		$("#submit").click(function(){
+    			if(confirm("确定要修改吗？")){
+    				$("#form1").submit()
+    			}
+    		})
+    		
+    			
+    	})
+    </script>
     
     <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
 
   </head>
   
-  <body>
-   		 这是菜单管理页面 <br>
+  <body style="background-color: white;">
+  <div>
+  	<form action="${rc.contextPath}/menus/sort" id="form1" role="form" method="post" >
+		<table class="table table-hover">
+  			<tr>
+  				<th>顺序：</th>
+  				<th>菜单名</th>
+  				<th>请输入修改后的顺序：</th>  				
+  			</tr>
+  			<#list user.role.authes as auth>
+  			<tr>
+  				<td>${auth.authId}</td>
+  				<input type="hidden" value="${auth.authId}" name="authIds" >
+  				<td>${auth.authName}</td>
+  				<td><input type="text" name="order" value="${auth.authId}"></td>
+  			</tr>
+  			</#list>
+		</table>
+		
+	</form>
+	<div class="form-control">
+			<input type="button" value="提交修改" id="submit" >
+		</div>
+	</div>
   </body>
 </html>
